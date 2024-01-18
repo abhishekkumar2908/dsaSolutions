@@ -1,11 +1,20 @@
-package com.dsa.debugger.processor;
+package com.example.demo;
 
-import dto.NumsDto;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-public class ArrayProcessor {
+@RestController
+public class APIs {
 
-	public int maxProduct(int[] nums) {
-        
+	@GetMapping("/hello")
+	public String greet() {
+		return "Hello!";
+	}
+	@PostMapping("/calculateMaxProduct")
+	public int calculateMaxProduct(@RequestBody NumsDto numsDto) {
+		int[] nums = numsDto.getNums();
 		int maxProduct = Integer.MIN_VALUE;
         int currentMax = 1;
         int currentMin = 1;
@@ -22,5 +31,7 @@ public class ArrayProcessor {
         }
 
         return maxProduct;
-    }
+		
+		
+	}
 }
